@@ -1,0 +1,117 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+  <style type="text/css">
+  body {
+  margin: 0;
+  }
+  #main {
+  height: 100%;
+  }
+  </style>
+  </head>
+  <body>
+  <div id="main"></div>
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+  <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+  <script>
+  var myChart = echarts.init(document.getElementById("main"));
+
+  
+
+  var heatData = [[121.480237,31.236305,3905],
+[116.413554,39.911013,2654.4],
+[113.270793,23.135308,1880],
+[104.071216,30.576279,700],
+[120.161693,30.280059,580],
+[114.066112,22.548515,501.4],
+[102.839667,24.885953,455],
+[118.095915,24.485821,399],
+[120.389445,36.072358,363],
+[118.802891,32.064735,342.3],
+[106.557165,29.570997,324],
+[117.205914,39.090908,302],
+[114.311831,30.598428,336]];
+  var optionID_20200402193431_759143 =
+  {
+
+  backgroundColor: '#1b1b1b',
+  color: ['gold','aqua','lime'],
+  title : {
+  text: '',
+  subtext:'',
+  x:'center',
+  textStyle : {
+  color: '#fff'
+  }
+  },
+  tooltip : {
+  trigger: 'item',
+  formatter: function (v) {
+  if(v[2].tooltipValue!=null){
+  return v[2].tooltipvalue;
+  }else{
+  return v[1];
+  }
+  }},
+  dataRange: {
+    show: false,
+    min : 0,
+    max : 100,
+    calculable : true,
+    color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+    textStyle:{
+      color:'#fff'
+    }
+  },
+  legend: {
+  show:false,
+  orient: 'vertical',
+  x:'left',
+  data:['Data'],
+  textStyle:{color:'backgroundColorData'}
+
+  },
+  toolbox: {
+  show : true,
+  orient : 'vertical',
+  x: 'right',
+  y: 'center',
+  feature : {
+  mark : {show: true},
+  dataView : {show: true, readOnly: false},
+  restore : {show: true},
+  saveAsImage : {show: true}
+  }
+  },
+  series : [
+  {
+  name:'Data',
+  type:'map',
+  mapType: 'china',
+  roam: true,
+  itemStyle:{
+  normal:{
+  borderColor:'rgba(100,149,237,1)',
+  borderWidth: 0.5,
+  label:{show:true,textStyle:{color:'#fff'}},
+  areaStyle: {color: 'backgroundColorData'}
+  },
+  emphasis:{label:{show:true,textStyle:{color:'#fff'}}}
+  },
+  data:[]
+  ,heatmap: {
+                      blurSize:35 ,
+                      colors:['blue', 'white'] ,
+                      minAlpha:20 ,
+                      opacity:1 ,
+                      data: heatData}
+  
+  
+  }]
+  }
+;
+  myChart.setOption(optionID_20200402193431_759143);
+  </script>
+  </body>
+  </html>
